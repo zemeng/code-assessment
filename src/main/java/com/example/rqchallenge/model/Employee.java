@@ -3,6 +3,7 @@ package com.example.rqchallenge.model;
 import lombok.Builder;
 import lombok.Data;
 
+/* Data model to represent Employee */
 @Data
 @Builder
 public class Employee {

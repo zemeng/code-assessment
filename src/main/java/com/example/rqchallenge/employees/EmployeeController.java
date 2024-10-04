@@ -119,11 +119,13 @@ public class EmployeeController implements IEmployeeController {
         log.info("Delete employee by id {}", id);
         try {
             Employee employeeToDelete = getEmployeeById(id).getBody();
+            String name = employeeToDelete == null ? "" : employeeToDelete.getName();
             boolean result = employeeService.delete(Integer.parseInt(id));
             if (result) {
-                return ResponseEntity.ok(employeeToDelete.getName());
+                return ResponseEntity.ok(name);
             } else {
-                // returned value should get reflected accordingly based on downstream's return
+                // returned value should get reflected accordingly based on the return of the downstream
+                // I think we need more info about the downstream service, maybe add it in README.
                 // since we're using a mocked dummy service, let's use 500x for now.
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
             }

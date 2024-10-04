@@ -87,11 +87,7 @@ public class DummyEmployeeService implements IEmployeeService {
     @Override
     public boolean delete(int employeeId) {
         Optional<Employee> employeeToDelete = getById(employeeId);
-        if (employeeToDelete.isPresent()) {
-            return employees.remove(employeeToDelete.get());
-        } else {
-            return false;
-        }
+        return employeeToDelete.isPresent() ? employees.remove(employeeToDelete.get()) : true;
     }
 
     /* Helper method to facilitate tests only */

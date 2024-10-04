@@ -15,5 +15,8 @@ public interface IEmployeeService {
 
     Employee create(@NonNull String name, @NonNull Integer age, @NonNull Integer salary);
 
+    /* The service contract says the status "success" is returned if the call succeeds
+    *  Assume a returned status should be good enough.
+    * */
     boolean delete(int employeeId);
 }
